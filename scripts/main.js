@@ -6,7 +6,7 @@
 
     // 启动轮播图
     $('.carousel').carousel();
-
+    console.log(window.location.hash);
     /*侧边导航*/
     // 统一侧栏数据变化点
     var $sides = {
@@ -73,7 +73,7 @@
         if($('#searchValue').val() === '') {
             window.location.hash = '#/';
         }else {
-            window.location.href = '#/search/' + encodeURIComponent($('#searchValue').val()) + '?' + new Date().getTime();
+            window.location.hash = '#/search/' + encodeURIComponent($('#searchValue').val()) + '?' + new Date().getTime();
 
         }
     });
