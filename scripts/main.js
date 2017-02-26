@@ -67,7 +67,6 @@
     $('#searchValue').on('input',function(e){
         $('#search').trigger('click');    
     });
-
     //  搜索
     $('#search').on('click',function() {
         if($('#searchValue').val() === '') {
