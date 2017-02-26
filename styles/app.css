@@ -1834,8 +1834,8 @@ main h3 {
   border: 0;
   overflow: visible;
 }
-#searchResult #dress-movement .banner-wrap{
-  width: 100%;
+#searchResult #dress-movement .dress-movement-wrap .banner-wrap{
+  width: 125%;
   margin: 0 auto;
 }
 #searchResult #dress-movement {
