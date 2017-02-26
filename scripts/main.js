@@ -2,15 +2,7 @@
 (function (window,angular) {
     // 接受收$$own自定义对象
     $$own = window.$$own;
-    // 跳转到路由#/
-    // var storage = window.localStorage;
-    // console.log(storage['href']);
-    // var href = storage['href'] ? JSON.parse(storage['href']) : '';
-    // if(href  === '') {
-    //     href = window.location.href;
-    //     storage['href'] = JSON.stringify(href);
-    // }
-    // window.location.href = href + '#/';    
+    // 跳转到路由    
     console.log(window.location.hash);
 
     // 启动轮播图
@@ -80,9 +72,9 @@
     //  搜索
     $('#search').on('click',function() {
         if($('#searchValue').val() === '') {
-            window.location.href = 'http://localhost:3000/#/';
+            window.location.hash = '#/';
         }else {
-            window.location.href = 'http://localhost:3000/#/search/' + encodeURIComponent($('#searchValue').val()) + '?' + new Date().getTime();
+            window.location.hash = '#/search/' + encodeURIComponent($('#searchValue').val()) + '?' + new Date().getTime();
 
         }
     });
