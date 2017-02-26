@@ -1,0 +1,25 @@
+<!-- 搜索区域 -->
+<main id="searchResult">
+	<div id="dress-movement" class="stroll bd clearfix hot-simple">
+		<div class="hot-simple-hd nav-hd clearfix">
+	    	<h3 class="fl">搜素结果</h3>
+	    </div>
+	   	<div class="dress-movement-wrap clearfix">
+	   		<div class="stroll-main channel-main">
+		        <ul class="banner-wrap clearfix">
+		            <li  ng-repeat="(index,item) in goods | filter:antistop"  class="banner" >
+		                <a ui-sref="detail({id: item.id})">
+		                    <img ng-src="{{item.images[0]}}" alt="无法加载" />
+		                    <p>{{item.title}}</p>
+		                    <p>￥{{item.discount}}</p>
+		                </a>
+	                    <span>
+	                    	<btn class="collecte" href="#">♡ 收藏</btn>
+	                    	<btn ng-click="addToCart(item.id)" ui-sref="cart({id: item.id})" class="add-cart" >加入购物车</btn>
+	                    </span>
+		            </li>                                  
+		        </ul>
+		     </div>
+	   	</div>
+	</div>
+</main>

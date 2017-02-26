@@ -1,0 +1,41 @@
+<div class="cart-down main-area">			
+	<p class="remind">您正在安全购物环境中，请放心购物</p>
+	<a id="close-cart" href="#/">×</a>
+	<section class="product-info">
+		<div ng-repeat="(index, goods) in goods" class="info-detail">
+			<div ng-class="{'check-box-checked': cart.selectSingle[index]}"  ng-click="selectSingle(index);" class="check-box"></div>
+			<a class="img-link" href="#"><img ng-src="{{goods.images[0]}}" alt=""></a>
+			<div class="discribe">
+				<p><a ui-sref="detail({id: goods.id})" class="name">{{goods.title}}</a></p>
+				<span class="price">价格：&yen;{{goods.discount}}</span>	
+				<div  class="modify">
+					<div  class="add-substract">
+						<a ng-click="changeOneCount(index,false)" class="substract">-</a>
+						
+						<input ng-model="cart.count[index]" class="goods-num" type="text" value="1">
+						<a ng-click="changeOneCount(index,true)" class="plus">+</a>
+					</div>
+					<div ng-click="showPrompt(index)" class="delete-forever">
+						<span class="up"></span>
+						<span class="down"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="estimate">
+			<div ng-click="selectAll()" ng-class="{'check-box-checked': cart.selectAll}" class="check-box"></div>
+			<span class="select">全选</span>
+			<p class="return-tip">
+				<span class="amount">总额：￥{{cart.retal}}</span>
+			</p>
+			<a ng-click="deleteSelected()" href="javascript:;" class="deleteSelected">删除选中</a>
+			<a ng-click="test()" href="javascript:;" class="caculate">去结算</a>
+		</div>
+		<div ng-show="cart.showPrompt" class="delete-alert">
+			<h2 id="tip">{{cart.port.theme}}</h2>
+			<a ng-click="deleteSingle(index)" href="javascript:;" class="affirm">确定</a>
+			<a ng-click="hidePrompt()" href="javascript:;" class="cancel">取消</a>
+		</div>
+	</section>
+	<div ng-show="cart.empty.flag" class="empty">{{cart.empty.tip}}</div>
+</div>

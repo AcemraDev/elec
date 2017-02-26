@@ -1,0 +1,36 @@
+<div id="order" class="cart-down main-area">			
+	<p class="remind">您已经购买的订单</p>
+	<a id="close-cart" href="#/">×</a>
+	<section class="product-info">
+		<div ng-repeat="(index, goods) in goods" class="info-detail ">
+			<div ng-class="{'check-box-checked': order.selectSingle[index]}"  ng-click="selectSingle(index);" class="check-box"></div>
+			<a class="img-link" href="#"><img ng-src="{{goods.images[0]}}" alt=""></a>
+			<div class="discribe">
+				<p><a ui-sref="detail({id: goods.id})" class="name">{{goods.title}}</a></p>
+				<span class="price">价格：&yen;{{goods.discount}}</span>
+				<p>
+					<span class="price">订单号：{{order.oddNumbers[index]}}</span>	
+					<span class="time">日期：{{order.date[index]}}</span>
+				</p>
+				<div  class="modify">
+					<div ng-click="showPrompt(index)" class="delete-forever">
+						<span class="up"></span>
+						<span class="down"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="estimate">
+			<div ng-click="selectAll()" ng-class="{'check-box-checked': order.selectAll}" class="check-box"></div>
+			<span class="select">全选</span>
+			<a ng-click="deleteSelected()" href="javascript:;" class="deleteSelected">删除选中</a>
+			<a ng-click="deleteAll()" href="javascript:;" class="caculate">删除全部</a>
+		</div>
+		<div ng-show="order.showPrompt" class="delete-alert">
+			<h2 id="tip">{{order.port.theme}}</h2>
+			<a ng-click="deleteSingle(index)" href="javascript:;" class="affirm">确定</a>
+			<a ng-click="hidePrompt()" href="javascript:;" class="cancel">取消</a>
+		</div>
+	</section>
+	<div ng-show="order.empty.flag" class="empty">{{order.empty.tip}}</div>
+</div>

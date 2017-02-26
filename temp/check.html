@@ -1,0 +1,25 @@
+  <!-- 注册Modal区域 -->
+  <div ng-show="showWindow" ng-class="model.type">
+    <div id="mask_fixed" class="mask-fixed"></div>
+	<div id="login_ui" class="login-ui">
+	    <h2>{{model.title}}</h2>
+	    <P>{{model.prompt}}</P>
+	    <div class="import">
+	        <label class="input_label" ng-repeat="input in model.input" ng-class="input.parent_class" ng-for="input.parent_class">
+	        	<span>{{input.name}}</span>
+	        	<input ng-change="inspectFormat(input.inspect_type,value,input.index)" ng-model="value" ng-id="input.parent_class" ng-class="input.class" type="{{input.type}}" >
+	        	<span ng-class="input.tip.type" class="tip" >{{input.tip.result}}</span>
+	        </label>
+		    <div ng-show="model.type == 'login'" id="login-link" class="login-link w304 clearfix">
+		        <!-- <input ng-click="autoLogin();" class="fl" type="checkbox" checked="{{checked}}"> -->
+		        <!-- <span class="fl" href="#">{{model.login_link.auto}}</span> -->
+		        <a class="fr" href="#/register">{{model.login_link.register}}</a>
+		    </div>
+	    </div>
+	    <div class="submit-register">
+	    	<button ng-click="submitData()" href="#/"  class="w304">{{model.submit.name}}</button><span ng-class="model.submit.tip.type" class="tip" >{{model.submit.tip.result}}</span>
+	    </div>
+	    <a href="#/" id="close_both"  class="close close-both"><span>×</span></button>
+	</div>
+  </div>
+  <!-- /注册Modal区域 -->

@@ -1,0 +1,37 @@
+<!-- 收藏夹 -->
+<div class="favorite">
+	<p class="remind">您已经收藏的宝贝</p>
+	<a id="close-collection" href="#/">×</a>
+	<ul>
+		<li ng-repeat="(index,goods) in goods">
+			<p>
+				<img ng-click="selectSingle(index)" ng-src="{{goods.images[0]}}" alt="">
+				<i ng-if="collection.selectSingle[index]" class="glyphicon glyphicon-ok"></i>
+				<span>
+                	<button ng-click="addToCart(goods.id)" ui-sref="cart({id: goods.id})" class="add-cart" >加购物车</button>
+                	<strong>|</strong>
+                	<button ng-click="showPrompt(index)" class="collecte" href="#">删除</button>
+                </span>
+			</p>
+			<p class="title">{{goods.title}}</p>
+			<p class="price">价格：￥{{goods.discount}}</p>
+		</li>
+	</ul>
+	<div class="main-area">
+		<div ng-show="collection.empty.flag" class="empty">{{collection.empty.tip}}</div>
+	</div>
+	<div class="product-info">
+		<div ng-show="collection.showPrompt" class="delete-alert">
+			<h2 id="tip">{{collection.port.theme}}</h2>
+			<a ng-click="deleteSingle(index)" href="javascript:;" class="affirm">确定</a>
+			<a ng-click="hidePrompt()" href="javascript:;" class="cancel">取消</a>
+		</div>
+	</div>
+	<div id="delete">
+		<span ng-class="{'selected': collection.selectAll}" ng-click="selectAll()" class="select">全选</span>
+		<a  ng-click="deleteAll()">删除全部</a>
+		<a ng-click="deleteSelected()">删除选中</a>
+	</div>
+	
+</div>
+<!-- 收藏夹 -->

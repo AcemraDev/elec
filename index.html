@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>电子商城</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+  <!-- 顶栏区域 -->
+ 	<div class="topbar hidden-sm hidden-xs">
+ 		<div class="container">
+ 			<div class="row">
+		 		<div class="topbar-left col-md-3 text-left">
+		            <div class="check">
+		            	<a href="#/register" class="btn btn-default"
+			            >免费注册</a>
+			            <a href="#/login" class="btn-default btn">登录</a>
+		            </div>
+		            <div class="welcome">
+			            <p>
+			            	<span class="glyphicon glyphicon-user"></span>个人中心
+			            </p>
+
+			            <p class="info">
+			            	<span><strong>账号：</strong><em class="account">304131191@qq.com</em></span>
+			            	<span><strong>等级：</strong>LV5</span>
+			            	<a  class="exist" href="#/"><strong>退出登录</strong></a>
+			            </p>
+		            </div>
+		        </div>
+		        <div class="topbar-right col-md-9 text-right">
+					<div class="order-wrap btn-group">
+					  <a href="#/order/0" class="mold my-order btn btn-default">
+					    <span class="glyphicon glyphicon-book"></span>
+		        		我的订单 <span class="caret"></span>
+					  </a>					
+					  <div ui-view="orderView"></div>
+					</div>
+					<div class="collection-wrap btn-group">
+					  <a href="#/collection/0" class="mold btn btn-default" >
+					    <span class="glyphicon glyphicon-heart"></span>
+		        		收藏夹 <span class="caret"></span>
+					  </a>		
+					  <div ui-view="collectionView"></div>
+					</div>
+					<div class="btn-group car-main-area">
+					  <a ui-sref="cart({'id': 0})" class="mold btn btn-default">
+					    <span class="glyphicon glyphicon-shopping-cart"></span>
+		        		购物车 <span class="caret"></span>
+						  </a>	
+						  
+						  <div ui-view="cartView"></div>	
+					</div>
+		        </div>
+ 			</div>
+ 		</div>
+ 	</div>
+  <!-- /顶栏区域 -->
+	
+  <!-- 头部区域 -->
+    <section class="w pc-header">
+    	<div class="logo">
+    		<a href="#">
+	    		<i>微商城</i>
+    		</a>
+    	</div>
+		<div class="pc-search">
+			<input id="searchValue" value="" type="text" autofocus="autofocus" placeholder="请输入关键词搜索">
+			<button id="search">搜索</button>
+		</div>
+    </section>
+  <!-- /头部区域 -->
+
+  <div ui-view="mainView"></div>	            
+  <div ui-view="loginView"></div>
+  <div ui-view="registerView"></div>
+  <div ui-view="detailView"></div>
+  <div ui-view="searchView"></div>
+
+  <!-- 回到顶部按钮 -->
+  <div class="nav-side list-group">
+	  <a id="costume_sport"  class="list-group-item">服饰运动</a>
+	  <a id="home_digital" class="list-group-item">
+	    家居数码
+	  </a>
+	  <a id="hot-recommend" class="list-group-item">热卖推荐</a>
+	  <a id="return-top" href="javascript:;" class="list-group-item"><span class="glyphicon glyphicon-eject"></span></a>
+  </div>
+  <!-- 版权部分 -->
+  <div class=copyright>
+  		©2017 ******* 使用前必读  京ICP证*******号  京公网安备***********号 
+  </div>
+</body>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/bower-angularjs/angular.min.js"></script>
+	<script src="bower_components/bower-angularjs/angular-route.min.js"></script>
+	<script src="bower_components/bower-angularjs/angular-resource.min.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="scripts/service/baseService.js"></script>
+	<script src="scripts/controllers/mainController.js"></script>	
+	<script src="scripts/own.js"></script>
+	<script src="scripts/main.js"></script>
+</html>

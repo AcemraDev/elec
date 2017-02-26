@@ -1,0 +1,175 @@
+<!-- /商品详情区域 -->
+  <div id="detail" class="">
+      <div class="dreamcrub">
+        <ul class="breadcrumbs">
+          <li class="home">
+            <a href="index.html" title="Go to Home Page">首页</a>
+            <span>&gt;</span>
+          </li>
+          <li class="home">&nbsp;
+            家居生活
+          </li>
+        </ul>
+      </div>
+      <div class="goods-detail">
+        <div class="goods-info">
+          <div class="area-img">
+            <div class="amplification" id="amplification">
+                <!--小盒子-->
+                <div ng-mouseleave="hideBigBox()" ng-mouseenter="magnifyMainImage()" class="small">
+                    <img ng-src={{goods.magnifyImage}} alt=""/>
+                    <div class="mask"></div>
+                </div>
+                <div ng-class="{showBig: showBig}" class="big">
+                    <img ng-src="{{goods.magnifyImage}}" alt=""/>
+                </div>
+            </div>
+            <div ng-mouseenter="changePosition()" class="wrap" id="wrap">
+               <div class="slide" id="slide">
+                   <ul>
+                       <li ng-repeat="(index,img) in goods.images" ng-class="{triggerBefore: transPosition}"><a><img ng-click="changeImage(index)" ng-src="{{img}}" alt=""/></a></li> 
+                   </ul>
+                   <div class="arrow" id="arrow">
+                       <a ng-click="moveImage()" class="prev">
+                         <img src="../images/prev.png" alt="">
+                       </a>
+                       <a ng-click="moveImage()" class="next">
+                         <img src="../images/next.png" alt="">
+                       </a>
+                   </div>
+               </div>
+            </div>
+          </div>
+          <div class="describe">
+            <h2 id='brand'> 
+              <strong>{{goods.title}}</strong>
+            </h2>
+            <p class="describe-price"><span>原价：　</span><em class="origin-price">￥{{goods.origin}}</em></p>
+            <p class="describe-price"><span>折扣价：</span><em class="discount"><strong>￥{{goods.discount}}</strong></em></p>
+            <div class="size">
+              <span>尺寸：</span>
+              <ul>
+                <li ng-repeat="(index,size) in goods.size">
+                  <a class="measure" ng-click="selectCurrent(index,'.measure','active-selec')" >{{size}}</a>
+                </li>
+              </ul>
+            </div>
+            <div class="classification">
+              <span>分类：</span>
+              <ul>
+                <li ng-repeat="(index,img) in goods.images" ng-if="index < 3">
+                  <a class="photos" ng-click="selectCurrent(index,'.photos','classific')">
+                    <img ng-src="{{img}}" alt="">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="number">
+              <span>数量：</span>
+              <div class="number-change">              
+                <a ng-click="changeCount(false)" href="javascript:;">-</a>
+                <input ng-model="goods.count" type="text">
+                <a ng-click="changeCount(true)" href="javascript:;">+</a>
+              </div>
+            </div>
+            <div class="buy-add">
+              <a ng-click="addToCart(goods.id)" ui-sref="cart({'id': goods.id})" class="btn btn-default" >加入到购物车</a>
+              <a ng-click="addToOrder(goods.id)" ui-sref="order({'id': goods.id})" class="btn btn-default buy-now">立即购买</a>
+            </div>
+            <div ng-repeat="(index,service) in goods.service" ng-class="service.class">
+              <span>{{service.name}}</span>
+              <i ng-repeat="(index,item) in service.items">{{item}}</i>
+            </div>
+          </div> 
+        </div>
+
+        <div class="comment">
+          <!--tab开始-->
+            <div class="tab">
+                <ul class="menu clearfix">
+                    <li class="current">
+                      <a id="babyDetail" ng-click="selectPage('babyDetail')">宝贝详情</a>
+                    </li>
+                    <li class="second">
+                      <a id="sumComment" ng-click="selectPage('sumComment')">
+                        累计评论
+                        <span class="discount">
+                          <strong>　{{goods.comments.length}}</strong>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                  <div  class="baby-details current">
+                      <div class="baby-info">
+                        <ul>
+                          <li class="lidetail" ng-repeat="(idnex,info) in goods.info"><span>{{info}}</span></li>
+                        </ul>
+                        <div  class="img-details">
+                          <img ng-repeat="(index,src) in goods.images" ng-src="{{src}}" alt="">
+                        </div>
+                      </div>
+                  </div>                   
+                  <div class="cumulative-comments baby-details">
+                    <ul>
+                      <li ng-repeat="(index,option) in goods.options">
+                        <div class="{{option.class}}">
+                          <input ng-click="currentRadio(index)" class="inputs" name="level" type="radio">
+                          <span>{{option.name}}({{option.count}})</span>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="cumulative-comments-body">
+                        <div ng-repeat="(index,comment) in goods.comments"  class="summary-evaluation">
+                           <div ng-repeat="(index,com) in comment" ng-if="comment[0].isShow">
+                              <div ng-if="$first" class="summary-left">
+                                  <img src="images/head_portrait.jpg" alt="">
+                                  <p>{{com.user}}</p>
+                                  <p>{{com.level}}</p>
+                              </div>
+                              <div ng-class="{dotted: index == 1}" class="summary-right">
+                                  <div class="first-evaluation"> 
+                                      <p><span ng-if="index == 1">[追加评论]　</span>{{com.text}}</p>
+                                      
+                                      <ul>
+                                        <li ng-repeat="(index,img) in com.images">
+                                          <a>
+                                            <img ng-src="{{img}}" alt="">
+                                          </a>
+                                        </li>
+                                      </ul>
+                                      <p class="evaluation-time"><span>{{com.time}}</span></p>
+                                      <a  ng-click="appendComment(index)" ng-if="comment.length != 2" class="appendComent">追加评论</a>
+                                  </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div  ng-repeat="(index,publish) in goods.publish" ng-class="{'append-evaluation': $last}" class="evaluation">                             
+                              <div class="evaluation-body">
+                                <p ng-if="$last" class="status-evaluation"><span>{{publish.level}}</span>{{publish.time}}</p>
+                                <p><span>{{publish.title}}</span></p>
+                                <textarea name="" id="" cols="30" rows="10"></textarea>
+                                <div class="show-img">
+                                  <input type="file">
+                                  <a clas="btn btn-default" href="#">晒照片</a>
+                                </div>
+                                <ul>
+                                  <li ng-repeat="(indx,option) in publish.options">
+                                      <div ng-class="{'good': $first,'medium': index == 1,'bad':$last}">
+                                        <input name="selec-level" type="radio">
+                                        <span>{{option}}</span>
+                                      </div>
+                                  </li>
+                                </ul>
+                                <a ng-click="closeAppendComment()" class="close" >×</a>
+                                <a class="published-evaluation btn btn-default" href="#">发表评论</a>
+                              </div>
+                        </div>
+                        <div id="mask" class=""></div>
+                    </div>
+                  </div>
+            </div>
+          <!--tab结束-->
+        </div>
+      </div>
+  </div>
+<!-- /商品详情区域 -->
