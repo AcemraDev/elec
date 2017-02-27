@@ -11,14 +11,14 @@
 </head>
 <body>
   <!-- 顶栏区域 -->
- 	<div class="topbar hidden-sm hidden-xs">
- 		<div class="container">
- 			<div class="row">
-		 		<div class="topbar-left col-md-3 text-left">
+ 	<div class="topbar ">
+ 		<div class="w">
+ 			<div class="">
+		 		<div class="topbar-left">
 		            <div class="check">
-		            	<a href="#/register" class="btn btn-default"
+		            	<a href="#/register" class=""
 			            >免费注册</a>
-			            <a href="#/login" class="btn-default btn">登录</a>
+			            <a href="#/login" class="">登录</a>
 		            </div>
 		            <div class="welcome">
 			            <p>
@@ -32,23 +32,23 @@
 			            </p>
 		            </div>
 		        </div>
-		        <div class="topbar-right col-md-9 text-right">
+		        <div class="topbar-right  text-right">
 					<div class="order-wrap btn-group">
-					  <a href="#/order/0" class="mold my-order btn btn-default">
+					  <a href="#/order/0" class="mold my-order">
 					    <span class="glyphicon glyphicon-book"></span>
 		        		我的订单 <span class="caret"></span>
 					  </a>					
 					  <div ui-view="orderView"></div>
 					</div>
 					<div class="collection-wrap btn-group">
-					  <a href="#/collection/0" class="mold btn btn-default" >
+					  <a href="#/collection/0" class="mold" >
 					    <span class="glyphicon glyphicon-heart"></span>
 		        		收藏夹 <span class="caret"></span>
 					  </a>		
 					  <div ui-view="collectionView"></div>
 					</div>
 					<div class="btn-group car-main-area">
-					  <a ui-sref="cart({'id': 0})" class="mold btn btn-default">
+					  <a ui-sref="cart({'id': 0})" class="mold">
 					    <span class="glyphicon glyphicon-shopping-cart"></span>
 		        		购物车 <span class="caret"></span>
 						  </a>	

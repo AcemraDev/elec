@@ -662,6 +662,15 @@ textarea {
       display: block;
     }
   }*/
+  height: 30px;
+}
+.topbar .topbar-left  {
+  float: left;
+  width: 17%;
+}
+.topbar .topbar-right {
+  float: right;
+  width: 42%;
 }
 .topbar .topbar-left .welcome {
   display: none;
@@ -701,7 +710,7 @@ textarea {
   display: block;
 }
 .topbar a {
-  display: inline-block;
+  /* display: inline-block; */
   margin: 0 3%;
   color: #333;
   background-color: #F5F5F5;
