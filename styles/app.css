@@ -662,6 +662,15 @@ textarea {
       display: block;
     }
   }*/
+  height: 33px;
+}
+.topbar .topbar-left {
+  float: left;
+  width: 12%;
+}
+.topbar .topbar-right {
+  float: right;
+  width: 27%;
 }
 .topbar .topbar-left .welcome {
   display: none;
@@ -702,11 +711,12 @@ textarea {
 }
 .topbar a {
   display: inline-block;
-  margin: 0 3%;
-  color: #333;
-  background-color: #F5F5F5;
+  /* margin: 0 3%; */
+  margin: 0 10px;
+  background-color: transparent;
   border: none;
   color: #337AB7;
+
 }
 .topbar a:hover {
   text-decoration: none;
@@ -722,7 +732,7 @@ textarea {
 }
 .cart-down {
   background-color: #fff;
-  voerflow: hidden;
+  overflow: hidden;
   width: 455px;
   position: absolute;
   top: 30px;
@@ -1819,16 +1829,6 @@ main h3 {
   line-height: 40px;
   padding-left: 15px;
   border-radius: 0;
-}
-@media screen and (max-width: 1246px) and (min-width: 985px) {
-  .household .thumbnail {
-    width: 20%;
-  }
-}
-@media screen and (max-width: 560px) and (min-width: 400px) {
-  .household .thumbnail {
-    width: 50%;
-  }
 }
 #searchResult {
   border: 0;
