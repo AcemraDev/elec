@@ -6,9 +6,8 @@
 
     // 启动轮播图
     $('.carousel').carousel();
-    console.log(window.location.hash);
+    
     /*侧边导航*/
-    // 统一侧栏数据变化点
     var $sides = {
         $goTop: {
             $selector: $('#return-top'),
